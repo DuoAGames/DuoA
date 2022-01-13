@@ -1,0 +1,8 @@
+    public void Stergere(String marca){
+        for(int i = 0; i < lista.size(); i++){
+            if(lista.get(i).getMarca().equals(marca)){
+                lista.remove(i);
+                
+            }
+        }
+    }
