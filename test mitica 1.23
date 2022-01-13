@@ -1,0 +1,194 @@
+package test1.23;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
+
+public class ListaMasini {
+    List<Masini> lista = new ArrayList<Masini>();
+    
+    public void CitireFisier(){
+        File file = new File("C:\\Users\\cauni\\OneDrive\\Desktop\\ListaCarti.txt");
+        try{
+            Scanner sc = new Scanner(file);
+            while(sc.hasNextLine()){
+                String str = sc.nextLine();
+                List<String> objectList = Arrays.asList(str.split(","));
+                
+                switch(objectList.get(0)){
+                case "sport": 
+                    MasiniSport sport = new MasiniSport(objectList.get(1), Integer.parseInt(objectList.get(2)), Boolean.parseBoolean(objectList.get(3)), Integer.parseInt(objectList.get(4)));
+                    lista.add(sport);
+                    break;
+                case "veche":
+                    MasiniVechi vechi = new MasiniVechi(objectList.get(1), Integer.parseInt(objectList.get(2)), Boolean.parseBoolean(objectList.get(3)), Integer.parseInt(objectList.get(4)));
+                    lista.add(vechi);
+                    break;
+                
+                case "noua":
+                    break;
+                }
+            }
+        } catch(FileNotFoundException e){
+            e.getMessage();
+        }
+    }
+    
+    public void Afisare(){
+        for(int i = 0; i<lista.size(); i++){
+            System.out.println(lista.get(i).toString());
+        }
+    }
+    
+    public String Cautare(String marca){
+        int j = 0;
+        for(int i = 0; i < lista.size(); i++){
+            
+            if(lista.get(i).getMarca().equals(marca)){
+                j = j+1;
+                
+            }
+        }
+        return "Exista: " + String.valueOf(j) + " elemente";
+    }
+    
+    public void Stergere(String marca){
+        for(int i = 0; i < lista.size(); i++){
+            if(lista.get(i).getMarca().equals(marca)){
+                lista.remove(i);
+                
+            }
+        }
+    }
+    
+    public boolean equals(List<Masini> lista){
+        for(int i = 0; i<lista.size()/2; i++){
+            for(int j = i+1; j<= lista.size(); j++){
+            if(lista.get(i) == lista.get(j)){
+                return true;
+            }
+            }
+        }
+        return false;
+    }
+}
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+package simulareexamen;
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args){
+        Scanner in = new Scanner(System.in);
+        ListaMasini lista = new ListaMasini();
+        
+        while(true){
+            String comanda = in.next();
+            switch(comanda){
+            case "citire":
+                lista.CitireFisier();
+                break;
+            case "afisare":
+                lista.Afisare();
+                break;
+            case "stergere":
+                System.out.print("Marca: ");
+                lista.Stergere(in.next());
+                break;
+            case "cautare":
+                System.out.print("Marca: ");
+                System.out.println(lista.Cautare(in.next()));
+                break;
+            case "egal":
+                System.out.print("Marca: ");
+                System.out.println(lista.equals(lista));                
+                break;
+            }
+        }
+    }
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+package simulareexamen;
+
+public class Masini {
+    private String marca;
+    private int cp;
+    private boolean cutieViteza;
+
+    public Masini(String marca, int cp, boolean cv){
+        this.marca = marca;
+        this.cp = cp;
+        this.cutieViteza = cv;
+        
+    }
+    public String toString(){
+        return "marca: " + this.marca + ", cp: " + this.cp + ",cv: " + this.cutieViteza;
+    }
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+
+    public String getMarca() {
+        return this.marca;
+    }
+
+    public void setCp(int cp) {
+        this.cp = cp;
+    }
+
+    public int getCp() {
+        return this.cp;
+    }
+
+    public void setCutieViteza(boolean cutieViteza) {
+        this.cutieViteza = cutieViteza;
+    }
+
+    public boolean getCutieViteza() {
+        return this.cutieViteza;
+    }
+    
+    
+}
+////////////////////////////////////////////////////////////////////////////////////////////
+package simulareexamen;
+
+public class MasiniSport extends Masini{
+    private int vitezaMaxima;
+    
+    public MasiniSport(String a, int b, boolean c, int d) {
+        super(a, b, c);
+        this.vitezaMaxima = d;
+    }
+
+    public void setVitezaMaxima(int vitezaMaxima) {
+        this.vitezaMaxima = vitezaMaxima;
+    }
+
+    public int getVitezaMaxima() {
+        return this.vitezaMaxima;
+    }
+}
+///////////////////////////////////////////////////////////////////////////////////////////
+package simulareexamen;
+
+public class MasiniVechi extends Masini{
+    private int anFabricatie;
+    public MasiniVechi(String a, int b, boolean c, int d) {
+        super(a, b, c);
+        this.anFabricatie = d;
+    }
+
+    public void setAnFabricatie(int anFabricatie) {
+        this.anFabricatie = anFabricatie;
+    }
+
+    public int getAnFabricatie() {
+        return this.anFabricatie;
+    }
+}
+///////////////////////////////////////////////////////////////////////////////////////////
