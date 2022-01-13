@@ -1,0 +1,11 @@
+    public String Cautare(String marca){
+        int j = 0;
+        for(int i = 0; i < lista.size(); i++){
+            
+            if(lista.get(i).getMarca().equals(marca)){
+                j = j+1;
+                
+            }
+        }
+        return "Exista: " + String.valueOf(j) + " elemente";
+    }
