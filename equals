@@ -1,0 +1,10 @@
+    public boolean equals(List<Masini> lista){
+        for(int i = 0; i<lista.size()/2; i++){
+            for(int j = i+1; j<= lista.size(); j++){
+            if(lista.get(i) == lista.get(j)){
+                return true;
+            }
+            }
+        }
+        return false;
+    }
