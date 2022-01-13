@@ -1,0 +1,26 @@
+    public void CitireFisier(){
+        File file = new File("C:\\Users\\cauni\\OneDrive\\Desktop\\ListaCarti.txt");
+        try{
+            Scanner sc = new Scanner(file);
+            while(sc.hasNextLine()){
+                String str = sc.nextLine();
+                List<String> objectList = Arrays.asList(str.split(","));
+                
+                switch(objectList.get(0)){
+                case "sport": 
+                    MasiniSport sport = new MasiniSport(objectList.get(1), Integer.parseInt(objectList.get(2)), Boolean.parseBoolean(objectList.get(3)), Integer.parseInt(objectList.get(4)));
+                    lista.add(sport);
+                    break;
+                case "veche":
+                    MasiniVechi vechi = new MasiniVechi(objectList.get(1), Integer.parseInt(objectList.get(2)), Boolean.parseBoolean(objectList.get(3)), Integer.parseInt(objectList.get(4)));
+                    lista.add(vechi);
+                    break;
+                
+                case "noua":
+                    break;
+                }
+            }
+        } catch(FileNotFoundException e){
+            e.getMessage();
+        }
+    }
