@@ -1,0 +1,9 @@
+    public void run(){
+        Rand();
+        
+    }
+    public double Rand(){
+        return Math.random()*10;
+    }
+    
+}
