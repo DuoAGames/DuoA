@@ -1,0 +1,3 @@
+in.next() - String
+in.nextInt() - int
+in.nextBoolean() - boolean
