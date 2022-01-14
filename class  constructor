@@ -1,0 +1,9 @@
+public NumeClasa(tipVariabila numeVariabila, ...){
+this.variabila = numeVariabila;
+.
+.
+.
+}
+
+NumeClasa k = new NumeClasa(in.next(),.....)
+
