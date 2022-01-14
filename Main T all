@@ -1,0 +1,56 @@
+package client4;
+
+public class Main{
+    
+
+    public static void main(String[] args) {
+        /*MyThread myThread1 = new MyThread(2, "myThread1");
+        
+        myThread1.start();
+        
+        MyThread myThread2 = new MyThread(3, "myThread2");
+        
+        myThread2.start();
+        
+        MyThread myThread3 = new MyThread(5, "myThread3");
+        
+        myThread3.start();
+
+        ///////////////////
+        Ex2 ex = new Ex2(500);
+        ex.start();
+*/
+        Ex3 r1 = new Ex3();
+        r1.start();
+        try {
+            r1.join();
+        } catch (InterruptedException e) {
+        }
+        Ex3 r2 = new Ex3();
+        r2.start();
+        try {
+            r2.join();
+        } catch (InterruptedException e) {
+        }
+        Ex3 r3 = new Ex3();
+        r3.start();
+        try {
+            r3.join();
+        } catch (InterruptedException e) {
+        }
+        Ex3 r4 = new Ex3();
+        r4.start();
+        try {
+            r4.join();
+        } catch (InterruptedException e) {
+        }
+        Ex3 r5 = new Ex3();
+        r5.start();
+        try {
+            r5.join();
+        } catch (InterruptedException e) {
+        }
+        int suma = 
+        
+    }
+}
